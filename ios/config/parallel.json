@@ -1,0 +1,19 @@
+{
+  "server": "hub.browserstack.com",
+  "user": "BROWSERSTACK_USERNAME",
+  "key": "BROWSERSTACK_ACCESS_KEY",
+
+  "capabilities": {
+    "build": "lettuce-browserstack",
+    "name": "parallel_test",
+    "browserstack.debug": true,
+    "realMobile":true,
+    "app": "bs://<hashed app-id>"
+  },
+
+  "devices": [{
+    "device": "iPhone 7"
+  }, {
+    "device": "iPhone 7 Plus"
+  }]
+}

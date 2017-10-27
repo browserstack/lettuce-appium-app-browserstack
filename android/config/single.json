@@ -1,0 +1,18 @@
+{
+  "server": "hub.browserstack.com",
+  "user": "BROWSERSTACK_USERNAME",
+  "key": "BROWSERSTACK_ACCESS_KEY",
+
+  "capabilities": {
+    "build": "lettuce-browserstack",
+    "name": "single_test",
+    "realMobile":true,
+    "browserstack.debug": true,
+    "app": "bs://<hashed app-id>"
+  },
+
+  "devices": [{
+    "device": "Google Pixel"
+  }]
+
+}
