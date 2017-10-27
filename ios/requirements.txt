@@ -1,0 +1,9 @@
+lettuce
+lettuce_webdriver
+python-Levenshtein
+nose
+browserstack-local
+paver
+selenium
+psutil
+Appium-Python-Client
