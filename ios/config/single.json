@@ -7,7 +7,6 @@
     "build": "lettuce-browserstack",
     "name": "single_test",
     "browserstack.debug": true,
-    "realMobile":true,
     "app": "bs://<hashed app-id>"
   },
 

@@ -32,7 +32,7 @@ def verfiy_login_error(step):
     text_elements = world.browser.find_elements_by_xpath("//XCUIElementTypeStaticText")
     assert(len(text_elements) > 0)
     elements = filter(
-        lambda x: x.__contains__("not registered on WordPress.com"),
+        lambda x: x and x.__contains__("not registered on WordPress.com"),
         [x.text for x in text_elements]
     )
     assert(len(elements) > 0)
