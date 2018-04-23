@@ -36,6 +36,9 @@ def setup_browser(feature):
     for key in CONFIG["capabilities"]:
         if key not in desired_capabilities:
             desired_capabilities[key] = CONFIG["capabilities"][key]
+    
+    if 'BROWSERSTACK_APP_ID' in os.environ:
+        desired_capabilities['app'] = os.environ['BROWSERSTACK_APP_ID']
 
     if "browserstack.local" in desired_capabilities and desired_capabilities["browserstack.local"]:
         start_local()
