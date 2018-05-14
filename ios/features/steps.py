@@ -8,34 +8,33 @@ from selenium.webdriver.support import expected_conditions as EC
 import os
 
 
-@step('I open the app and click on login')
-def click_on_login(step):
+@step('I open the app and click on Text Button')
+def click_on_textbutton(step):
     with AssertContextManager(step):
         element = WebDriverWait(world.browser, 30).until(
-            EC.presence_of_element_located((MobileBy.ACCESSIBILITY_ID, "Log In"))
+            EC.presence_of_element_located((MobileBy.ACCESSIBILITY_ID, "Text Button"))
         )
         element.click()
 
 
-@step(u'Enter email "(.*?)" and click on next')
-def enter_email_and_click_next(step, email):
-    email_input = WebDriverWait(world.browser, 30).until(
-        EC.element_to_be_clickable((MobileBy.ACCESSIBILITY_ID, "Email address"))
+@step(u'Type "(.*?)" and hit enter')
+def enter_text(step, text):
+    text_input = WebDriverWait(world.browser, 30).until(
+        EC.element_to_be_clickable((MobileBy.ACCESSIBILITY_ID, "Text Input"))
     )
-    email_input.send_keys(email)
-    world.browser.find_element_by_accessibility_id("Next").click()
+    text_input.send_keys(text+"\n")
     time.sleep(5)
     
 
-@step(u'Verify login error')
-def verfiy_login_error(step):
-    text_elements = world.browser.find_elements_by_xpath("//XCUIElementTypeStaticText")
-    assert(len(text_elements) > 0)
-    elements = filter(
-        lambda x: x and x.__contains__("not registered on WordPress.com"),
-        [x.text for x in text_elements]
+@step(u'Verify displayed text matches input text')
+def verfiy_match(step):
+    text_output = WebDriverWait(world.browser, 30).until(
+        EC.element_to_be_clickable((MobileBy.ACCESSIBILITY_ID, "Text Output"))
     )
-    assert(len(elements) > 0)
+    if text_output!=None and text_output.text=="hello@browserstack.com":
+        assert True
+    else:
+        assert False
     
 
 # Local Steps
