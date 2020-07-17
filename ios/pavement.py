@@ -1,6 +1,6 @@
 from paver.easy import *
 from paver.setuputils import setup
-import multiprocessing
+import threading, os, platform
 
 setup(
     name = "lettuce-browserstack",
@@ -11,28 +11,43 @@ setup(
     license = "MIT",
     keywords = "example selenium browserstack",
     url = "https://github.com/browserstack/lettuce-appium-app-browserstack",
-    packages=['features']
+    packages=['ios/examples/run-first-test/features', 'ios/examples/run-local-test/features', 'ios/examples/run-parallel-tests/features']
 )
 
-def run_lettuce_test(config, feature, task_id=0):
-    sh('CONFIG_FILE=config/%s.json TASK_ID=%s lettuce features/%s.feature' % (config, task_id, feature))
+def run_behave_test(feature, task_id=0):
+    if feature == 'first_test':
+        sh('lettuce examples/run-first-test/features/first_test.feature')
+    elif feature == 'local_test':
+        sh('lettuce examples/run-local-test/features/local_test.feature')
+    elif feature == 'parallel_tests':
+        if platform.system() == 'Windows':
+            sh('SET TASK_ID=%s & lettuce examples/run-parallel-tests/features/parallel_test.feature' % (task_id))
+        else:
+            sh('export TASK_ID=%s && lettuce examples/run-parallel-tests/features/parallel_test.feature' % (task_id))
 
 @task
 @consume_nargs(1)
 def run(args):
-    """Run single, local and parallel test using different config."""
-    if args[0] in ('single', 'local'):
-        run_lettuce_test(args[0], args[0])
-    else:
+    """Run first_test, local_test and parallel_tests using config files"""
+    if args[0] == 'first_test':
+        run_behave_test(args[0])
+    elif args[0] == 'local_test':
+        run_behave_test(args[0])
+    elif args[0] == 'parallel_tests':
         jobs = []
         for i in range(2):
-            p = multiprocessing.Process(target=run_lettuce_test, args=(args[0], "single", i))
+            p = threading.Thread(target=run_behave_test,args=(args[0],i))
             jobs.append(p)
             p.start()
+
+        for thread in jobs:
+            thread.join()
+    else:
+        print("Wrong paver task given") 
 
 @task
 def test():
     """Run all tests"""
-    sh("paver run single")
-    sh("paver run local")
-    sh("paver run parallel")
+    sh("paver run first_test")
+    sh("paver run local_test")
+    sh("paver run parallel_tests")

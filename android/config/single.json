@@ -1,17 +1,16 @@
 {
   "server": "hub-cloud.browserstack.com",
-  "user": "BROWSERSTACK_USERNAME",
-  "key": "BROWSERSTACK_ACCESS_KEY",
+  "user": "neerajkumar42",
+  "key": "MXmmyxNzZTYmXyyA8xyB",
 
   "capabilities": {
     "build": "lettuce-browserstack",
     "name": "single_test",
     "browserstack.debug": true,
-    "app": "bs://<hashed app-id>"
+    "app": "bs://d318ec55142bf92b1fec9fce6904109294db6678"
   },
 
   "devices": [{
     "device": "Google Pixel"
   }]
-
 }

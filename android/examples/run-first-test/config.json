@@ -1,0 +1,14 @@
+{
+    "username": "neerajkumar42",
+    "access_key": "MXmmyxNzZTYmXyyA8xyB",
+  
+    "capabilities": {
+      "project": "First Lettuce Android Project",
+      "build": "Lettuce Android",
+      "name": "first_test",
+      "browserstack.debug": true,
+      "app": "bs://d318ec55142bf92b1fec9fce6904109294db6678",
+      "device":"Google Pixel"
+    }
+}
+  
