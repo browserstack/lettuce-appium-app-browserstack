@@ -18,7 +18,7 @@ def setup_browser(feature):
     desired_capabilities = CONFIG['capabilities']
     desired_capabilities['device'] = CONFIG['environments'][TASK_ID]['device']
     world.browser = webdriver.Remote(
-        desired_capabilities=desired_capabilities,
+        desired_capabilities=dict(desired_capabilities),
         command_executor="http://%s:%s@hub-cloud.browserstack.com/wd/hub" % (BROWSERSTACK_USERNAME, BROWSERSTACK_ACCESS_KEY)
     )
 
