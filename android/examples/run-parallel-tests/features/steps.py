@@ -25,3 +25,4 @@ def search_with_keyword(step, keyword):
 def verfiy_result_should_present(step):
     elems = world.browser.find_elements_by_class_name("android.widget.TextView")
     assert len(elems) > 0, "results not populated"
+    
