@@ -14,7 +14,7 @@ setup(
     packages=['features']
 )
 
-def run_behave_test(task_id=0):
+def run_lettuce_test(task_id=0):
     if platform.system() == 'Windows':
         sh('SET TASK_ID=%s & lettuce features/parallel_test.feature' % (task_id))
     else:
@@ -26,7 +26,7 @@ def run(args):
     if args[0] == 'parallel_tests':
         jobs = []
         for index in range(2):
-            thread = threading.Thread(target=run_behave_test,args=(index,))
+            thread = threading.Thread(target=run_lettuce_test,args=(index,))
             jobs.append(thread)
             thread.start()
 

@@ -14,13 +14,13 @@ setup(
     packages=['packages']
 )
 
-def run_behave_test():
+def run_lettuce_test():
     sh('lettuce features/first_test.feature')
 
 @task
 @consume_nargs(1)
 def run(args):
     if args[0] == 'first_test':
-        run_behave_test()
+        run_lettuce_test()
     else:
         print("Wrong paver task given") 
