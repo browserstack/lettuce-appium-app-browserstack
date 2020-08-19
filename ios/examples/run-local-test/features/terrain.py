@@ -23,12 +23,14 @@ def stop_local():
     if bs_local is not None:
         bs_local.stop()
 
+@before.all
+def before_all():
+    # Start BrowserStack Local before start of the test suite
+    start_local()
 
 @before.each_feature
 def setup_browser(feature):
     desired_capabilities = CONFIG['capabilities']
-    # Start BrowserStack local before start of the test
-    start_local()
     world.browser = webdriver.Remote(
         desired_capabilities=desired_capabilities,
         command_executor="http://%s:%s@%s/wd/hub" % (BROWSERSTACK_USERNAME, BROWSERSTACK_ACCESS_KEY, CONFIG['server'])
@@ -39,4 +41,9 @@ def cleanup_browser(feature):
     # Invoke world.browser.quit() to indicate that the test is completed. 
     # Otherwise, it will appear as timed out on BrowserStack.
     world.browser.quit()
+    stop_local()
+
+@after.all
+def after_all(totalResult):
+    # Stop BrowserStack Local after end of the test suite
     stop_local()
