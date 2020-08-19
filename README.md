@@ -14,7 +14,7 @@ This repository demonstrates how to run Appium Lettuce tests on BrowserStack App
 
 2. Package Manager `pip`
 
-    Note : `pip` comes installed with Python 2.7.9+ and python 3.4+
+    Note : `pip` comes installed with Python 2.7.9+
 
     - If `pip` is not installed, follow these instructions:
         - Securely download get-pip.py by following this link: [get-pip.py](https://bootstrap.pypa.io/get-pip.py) or use following cURL command to download it:
@@ -24,49 +24,23 @@ This repository demonstrates how to run Appium Lettuce tests on BrowserStack App
         ```
 
         - After dowloading, run the file :
-
-            - For Python 3
-
-                ```sh
-                python3 get-pip.py
-                ```
-
-            - For Python 2
-
-                ```sh
-                python2 get-pip.py
-                ```
+            ```sh
+            python get-pip.py
+            ```
 
 ### Install  the dependencies
 
 To install the dependencies for Android tests, run :
 
-- For Python 3
-
     ```sh
-    pip3 install -r android/requirements.txt
+    pip install -r android/requirements.txt
     ```
-
-- For Python 2
-
-    ```sh
-    pip2 install -r android/requirements.txt
-    ```
-
 Or,
 
 To install the dependencies for iOS tests, run :
 
-- For Python 3
-
     ```sh
-    pip3 install -r ios/requirements.txt
-    ```
-
-- For Python 2
-
-    ```sh
-    pip2 install -r ios/requirements.txt
+    pip install -r ios/requirements.txt
     ```
 
 ## Getting Started
