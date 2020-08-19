@@ -35,5 +35,7 @@ def setup_browser(feature):
 
 @after.each_feature
 def cleanup_browser(feature):
+    # Invoke world.browser.quit() to indicate that the test is completed. 
+    # Otherwise, it will appear as timed out on BrowserStack.
     world.browser.quit()
     stop_local()
