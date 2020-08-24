@@ -1,9 +1,7 @@
-{
-    "server": "hub-cloud.browserstack.com",
-    "username": "BROWSERSTACK_USERNAME",
-    "access_key": "BROWSERSTACK_ACCESS_KEY",
-  
+{  
     "capabilities": {
+        "browserstack.user" : "YOUR_USERNAME",
+        "browserstack.key" : "YOUR_ACCESS_KEY",
         "project": "First Lettuce Android Project",
         "build": "Lettuce Android Parallel",
         "name": "parallel_test",

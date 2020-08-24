@@ -9,8 +9,9 @@ with open(config_file_path) as config_file:
 
 TASK_ID = int(os.environ['TASK_ID']) if 'TASK_ID' in os.environ else 0
 
-BROWSERSTACK_USERNAME = os.environ['BROWSERSTACK_USERNAME'] if 'BROWSERSTACK_USERNAME' in os.environ else CONFIG['username']
-BROWSERSTACK_ACCESS_KEY = os.environ['BROWSERSTACK_ACCESS_KEY'] if 'BROWSERSTACK_ACCESS_KEY' in os.environ else CONFIG['access_key']
+# Take user credentials from environment variables if they are defined
+if 'BROWSERSTACK_USERNAME' in os.environ: CONFIG['capabilities']['browserstack.user'] = os.environ['BROWSERSTACK_USERNAME'] 
+if 'BROWSERSTACK_ACCESS_KEY' in os.environ: CONFIG['capabilities']['browserstack.key'] = os.environ['BROWSERSTACK_ACCESS_KEY']
 
 @before.each_feature
 def setup_browser(feature):
@@ -18,7 +19,7 @@ def setup_browser(feature):
     desired_capabilities['device'] = CONFIG['environments'][TASK_ID]['device']
     world.browser = webdriver.Remote(
         desired_capabilities=dict(desired_capabilities),
-        command_executor="http://%s:%s@%s/wd/hub" % (BROWSERSTACK_USERNAME, BROWSERSTACK_ACCESS_KEY, CONFIG['server'])
+        command_executor="http://hub-cloud.browserstack.com/wd/hub"
     )
 
 @after.each_feature
