@@ -1,9 +1,8 @@
-lettuce
-lettuce_webdriver
-python-Levenshtein
-nose
-browserstack-local
-paver
-selenium
-psutil
-Appium-Python-Client
+lettuce==0.2.23
+lettuce_webdriver==0.3.5
+nose==1.3.7
+browserstack-local==1.2.2
+paver==1.3.4
+selenium==3.141.0
+psutil==5.7.2
+Appium-Python-Client==0.52
