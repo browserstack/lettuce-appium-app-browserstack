@@ -7,9 +7,7 @@
       "name": "first_test",
       "browserstack.debug": true,
       "app": "bs://<app-id>",
-      "device": "Google Pixel 3",
-      "os_version": "9.0"
+      "device": "Google Pixel 8 Pro",
+      "os_version": "14.0"
     }
 }
-
-  
