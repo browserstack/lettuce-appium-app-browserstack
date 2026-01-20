@@ -7,7 +7,7 @@
       "name": "first_test",
       "browserstack.debug": true,
       "app": "bs://<app-id>",
-      "device": "iPhone XR",
+      "device": "iPhone 13",
       "os_version": "15"
     }
 }
