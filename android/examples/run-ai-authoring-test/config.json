@@ -1,0 +1,13 @@
+{
+    "capabilities": {
+      "browserstack.user" : "YOUR_USERNAME",
+      "browserstack.key" : "YOUR_ACCESS_KEY",
+      "project": "First Lettuce Android Project",
+      "build": "browserstack-build-1",
+      "name": "first_test",
+      "browserstack.debug": true,
+      "app": "bs://<app-id>",
+      "device": "Google Pixel 8 Pro",
+      "os_version": "14.0"
+    }
+}
